@@ -9,6 +9,9 @@ class Venda extends Totalizavel
   private $cliente;
   private $itens;
 
+  public function __construct(){
+    $totalizavel = new \Totalizavel();
+  }
   public function getNumero()
   {
     return $this->numero;
