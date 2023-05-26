@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Cliente.php';
+namespace App\Entities;
 
 class Venda extends Totalizavel
 {
@@ -9,9 +9,6 @@ class Venda extends Totalizavel
   private $cliente;
   private $itens;
 
-  public function __construct(){
-    $totalizavel = new \Totalizavel();
-  }
   public function getNumero()
   {
     return $this->numero;
@@ -37,7 +34,7 @@ class Venda extends Totalizavel
   {
     $this->data = $data;
   }
-  public function setCliente(\Cliente $cliente)
+  public function setCliente(Cliente $cliente)
   {
     $this->cliente = $cliente;
   }

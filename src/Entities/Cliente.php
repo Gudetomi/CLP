@@ -1,13 +1,11 @@
 <?php
 
+namespace App\Entities;
+
 class Cliente extends Pessoa
 {
   private $rg;
   private $data;
-
-  public function __construct(){
-    $pessoa = new \Pessoa();
-  }
 
   public function getRg()
   {

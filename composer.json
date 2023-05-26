@@ -1,0 +1,13 @@
+{
+    "name": "gudetomi/clp",
+    "authors": [
+        {
+            "name": "Gustavo",
+            "email": "gustavodetomi@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"App\\": "src"}
+    }
+}

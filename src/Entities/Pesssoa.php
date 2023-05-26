@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entities;
+
 abstract class  Pessoa
 {
   protected $nome;
