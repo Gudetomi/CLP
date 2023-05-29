@@ -19,7 +19,6 @@ class MenuController
   {
 
     while (true) {
-
       echo "Selecione uma opção:\n";
       echo "1. Clientes\n";
       echo "2. Produtos\n";
