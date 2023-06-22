@@ -6,8 +6,8 @@ class ClienteController
 {
   public function __construct()
   {
-    $this->model = new ClienteModel();
-    $this->view = new ClienteView();
+    $this->model = new \App\Model\ClienteModel();
+    $this->view = new \App\View\ClienteView();
   }
   public function menu()
   {
@@ -44,6 +44,21 @@ class ClienteController
   }
   public function cadastrar()
   {
+    $nome = readline("Informe o nome: \n");
+    $endereco = readline("Informe o endereço:  \n");
+    $rg = readline("Informe o rg:  \n");
+    $dataNasc = readline("Informe a data de nascimento:  \n");
+
+    $cliente = array(
+      'nome'=> $nome,
+      'endereco' => $endereco,
+      'rg' => $rg,
+      'dataNasci' => new \DateTime($dataNasc)
+    );
+    $cliente = $this->model->cadastrar($cliente);
+
+    echo("O cliente ".$cliente."foi salvo!");
+    
   }
   public function editar()
   {
