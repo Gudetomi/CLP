@@ -4,8 +4,8 @@ namespace App\Controller;
 
 class ProdutoController
 {
-  private $model;
-  private $view;
+  private \App\Model\ProdutoModel $model;
+  private \App\View\ProdutoView $view;
 
   public function __construct()
   {
@@ -19,11 +19,12 @@ class ProdutoController
       echo "1. Cadastrar\n";
       echo "2. Editar\n";
       echo "3. Excluir\n";
+      echo "4. Visualizar\n";
       echo "0. Sair\n";
 
-      echo("Opção: \n");
+      echo ("Opção: \n");
       $opcao = readline();
-      
+
       switch ($opcao) {
         case '1':
           echo "Você selecionou a Opção 1.\n";
@@ -37,6 +38,10 @@ class ProdutoController
           echo "Você selecionou a Opção 3.\n";
           $this->excluir();
           break;
+        case '4':
+          echo "Você selecionou a Opção 4.\n";
+          $this->visualizar();
+          break;
         case '0':
           echo "Voltando ao menu principal...\n";
           return;
@@ -49,39 +54,49 @@ class ProdutoController
   }
   public function cadastrar()
   {
-    echo("Informe o indice: \n");
-    $indice = readline();
+    echo ("Informe o indice: \n");
+    $indice = (int) readline();
 
-    echo("Informe o nome: \n");
+    echo ("Informe o nome: \n");
     $nome = readline();
 
-    echo("Informe valor:  \n");
-    $valor = readline();
+    echo ("Informe valor:  \n");
+    $valor = (float) readline();
 
-    $this->model->cadastrar($indice, $nome, $valor);
+    $this->model->cadastrar(["codigo" => $indice, "nome" => $nome, "valor" => $valor]);
   }
   public function editar()
   {
-    echo("Informe o indice: \n");
-    $indice = readline();
+    $this->view->exibirProdutos();
 
-    echo("Informe o codigo: \n");
-    $novoCodigo = readline();
+    echo ("Informe o código: \n");
+    $codigo = readline();
 
-    echo("Informe o nome: \n");
+    if(!isset($GLOBALS['Produtos'][$codigo])) {
+      echo "Produto não encontrado.\n";
+      return;
+    }
+
+    echo ("Informe o nome: \n");
     $novoNome = readline();
 
-    echo("Informe o valor: \n");
+    echo ("Informe o valor: \n");
     $novoValor = readline();
 
-    $this->model->editar($indice, $novoCodigo, $novoNome, $novoValor);
+    $this->model->editar($codigo, $novoNome, $novoValor);
   }
   public function excluir()
   {
-    echo("Informe o indice para a exclusão: \n");
+    $this->view->exibirProdutos();
+
+    echo ("Informe o código do produto: \n");
     $indice = readline();
-    if(isset($indice)){
+    if (isset($indice)) {
       $this->model->excluir($indice);
     }
+  }
+  public function visualizar()
+  {
+    $this->view->exibirProdutos();
   }
 }

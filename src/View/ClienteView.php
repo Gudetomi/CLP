@@ -5,17 +5,17 @@ namespace App\View;
 class ClienteView
 {
 
-  public function exibirClientes()
+  static public function exibirClientes()
   {
     if (isset($GLOBALS['Clientes']) && is_array($GLOBALS['Clientes'])) {
       echo "Lista de Clientes:\n";
 
       foreach ($GLOBALS['Clientes'] as $indice => $cliente) {
-        echo "Cliente:" . $indice . "\n";
-        echo "Nome: " . $cliente->nome . "\n";
-        echo "Endereço: " . $cliente->endereco . "\n";
-        echo "RG: " . $cliente->rg . "\n";
-        echo "Data de Nascimento: " . $cliente->dataNascimento . "\n";
+        echo "Cliente nº " . $indice . ":\n";
+        echo "Nome: " . $cliente->getNome() . "\n";
+        echo "Endereço: " . $cliente->getEndereco() . "\n";
+        echo "RG: " . $cliente->getRg() . "\n";
+        echo "Data de Nascimento: " . $cliente->getData()->format('d-m-Y') . "\n";
         echo "-------------------------\n";
       }
     } else {

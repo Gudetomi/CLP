@@ -11,14 +11,16 @@ class ProdutoModel
     $produto->setNome($dados['nome']);
     $produto->setValor($dados['valor']);
 
-    array_push($GLOBALS['Produtos'],  $produto);
+    //array_push($GLOBALS['Produtos'],  $produto);
+    $GLOBALS['Produtos'][$dados['codigo']] = $produto;
+
+    echo "Produto cadastrado com sucesso!\n\n";
 
     return $produto->getNome();
   }
-  public function editar($indice, $novoCodigo, $novoNome, $novoValor)
+  public function editar($indice, $novoNome, $novoValor)
   {
     if (isset($GLOBALS['Produtos'][$indice])) {
-      $GLOBALS['Produtos'][$indice]->setCodigo($novoCodigo);
       $GLOBALS['Produtos'][$indice]->setNome($novoNome);
       $GLOBALS['Produtos'][$indice]->setValor($novoValor);
 

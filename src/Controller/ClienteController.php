@@ -4,6 +4,9 @@ namespace App\Controller;
 
 class ClienteController
 {
+  private \App\Model\ClienteModel $model;
+  private \App\View\ClienteView $view;
+
   public function __construct()
   {
     $this->model = new \App\Model\ClienteModel();
@@ -16,6 +19,7 @@ class ClienteController
       echo "1. Cadastrar\n";
       echo "2. Editar\n";
       echo "3. Excluir\n";
+      echo "4. Visualizar\n";
       echo "0. Sair\n";
 
       echo ("Opção: \n");
@@ -34,6 +38,10 @@ class ClienteController
           echo "Você selecionou a Opção 3.\n";
           $this->excluir();
           break;
+        case '4':
+            echo "Você selecionou a Opção 4.\n";
+            $this->visualizar();
+            break;
         case '0':
           echo "Voltando ao menu principal...\n";
           return;
@@ -70,10 +78,15 @@ class ClienteController
   }
   public function editar()
   {
-    $this->view->exibirCLientes();
+    $this->view->exibirClientes();
 
-    echo ("Informe o indice: \n");
-    $indice = readline();
+    echo ("Informe o número do cliente que deseja editar: \n");
+    $indice = (int) readline();
+
+    if(!isset($GLOBALS["Clientes"][$indice])){
+      echo "Cliente não encontrado.\n";
+      return;
+    }
 
     echo ("Informe o nome: \n");
     $novoNome = readline();
@@ -87,16 +100,22 @@ class ClienteController
     echo ("Informe a data de nascimento:  \n");
     $novaDataNascimento = readline();
 
+    $novaDataNascimento = new \DateTime($novaDataNascimento);
+
     $this->model->editar($indice, $novoNome, $novoEndereco, $novoRg, $novaDataNascimento);
   }
   public function excluir()
   {
-    $this->view->exibirCLientes();
+    $this->view->exibirClientes();
 
     echo ("Informe o indice para a exclusão: \n");
     $indice = readline();
     if (isset($indice)) {
       $this->model->excluir($indice);
     }
+  }
+  public function visualizar()
+  {
+    $this->view->exibirClientes();
   }
 }

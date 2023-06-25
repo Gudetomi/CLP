@@ -6,16 +6,14 @@ use App\Entities\Produto;
 
 class ItemVendaModel
 {
-  public function cadastrar($dados, $indiceVenda)
+  public function cadastrar($dados)
   {
     $item = new \App\Entities\ItemVenda();
     $item->setProduto($dados['produto']);
     $item->setValor($dados['produto']->getValor());
     $item->setQuantidade($dados['quantidade']);
 
-    array_push($GLOBALS['Vendas'][$indiceVenda]->getItens(),  $item);
-
-    return $item->getProduto()->getNome();
+    return $item;
   }
   public function editar(int $indiceItem, int $indiceVenda, Produto $novoProduto, int $novaQuantidade)
   {

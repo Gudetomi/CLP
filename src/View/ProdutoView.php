@@ -4,17 +4,16 @@ namespace App\View;
 
 class ProdutoView
 {
-
-  public function exibirClientes()
+  static public function exibirProdutos()
   {
     if (isset($GLOBALS['Produtos']) && is_array($GLOBALS['Produtos'])) {
       echo "Lista de Produtos:\n";
 
       foreach ($GLOBALS['Produtos'] as $indice => $produto) {
-        echo "Produto:" . $indice . "\n";
-        echo "Código: " . $produto->codigo . "\n";
-        echo "Nome: " . $produto->nome . "\n";
-        echo "Valor: " . $produto->valor . "\n";
+        echo "Produto nº " . $indice . "\n";
+        echo "Código: " . $produto->getCodigo() . "\n";
+        echo "Nome: " . $produto->getNome() . "\n";
+        echo "Valor: " . $produto->getValor() . "\n";
         echo "-------------------------\n";
       }
     } else {

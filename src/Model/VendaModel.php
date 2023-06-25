@@ -13,7 +13,10 @@ class VendaModel
     $venda->setCliente($dados['cliente']);
     $venda->setItens($dados['itens']);
 
-    array_push($GLOBALS['Vendas'], $venda);
+    // array_push($GLOBALS['Vendas'], $venda);
+    $GLOBALS['Vendas'][$dados['numero']] = $venda;
+
+    echo "Venda cadastrada com sucesso!\n\n";
 
     return $venda->getNumero();
   }
