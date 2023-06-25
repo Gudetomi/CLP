@@ -11,7 +11,6 @@ class VendaController
   public function __construct()
   {
     $this->model = new \App\Model\VendaModel();
-    //$this->view = new VendaView();
   }
   public function menu()
   {

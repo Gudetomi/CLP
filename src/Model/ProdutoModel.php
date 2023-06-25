@@ -11,7 +11,6 @@ class ProdutoModel
     $produto->setNome($dados['nome']);
     $produto->setValor($dados['valor']);
 
-    //array_push($GLOBALS['Produtos'],  $produto);
     $GLOBALS['Produtos'][$dados['codigo']] = $produto;
 
     echo "Produto cadastrado com sucesso!\n\n";
