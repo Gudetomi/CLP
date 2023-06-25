@@ -4,13 +4,13 @@ namespace App\Entities;
 
 class Produto
 {
-  private $produto;
+  private $codigo;
   private $nome;
   private $valor;
 
-  public function getProduto()
+  public function getCodigo()
   {
-    return $this->produto;
+    return $this->codigo;
   }
   public function getNome()
   {
@@ -20,9 +20,9 @@ class Produto
   {
     return $this->valor;
   }
-  public function setProduto(int $produto)
+  public function setCodigo(int $codigo)
   {
-    $this->produto = $produto;
+    $this->codigo = $codigo;
   }
   public function setNome(string $nome)
   {

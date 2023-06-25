@@ -25,7 +25,8 @@ class MenuController
       echo "3. Vendas\n";
       echo "0. Sair\n";
 
-      $opcao = readline("Opção: ");
+      $opcao = readline("Opcao: ");
+      
       switch ($opcao) {
         case '1':
           echo "Você selecionou a Opção 1.\n";

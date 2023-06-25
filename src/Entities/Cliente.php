@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-class Cliente extends Pessoa
+class Cliente extends \App\Entities\Pessoa
 {
   private $rg;
   private $data;

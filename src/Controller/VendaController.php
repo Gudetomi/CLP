@@ -6,8 +6,8 @@ class VendaController
 {
   public function __construct()
   {
-    $this->model = new VendaModel();
-    $this->view = new VendaView();
+    $this->model = new \App\Model\VendaModel();
+    //$this->view = new VendaView();
   }
   public function menu()
   {
@@ -18,7 +18,9 @@ class VendaController
       echo "3. Excluir\n";
       echo "0. Sair\n";
 
-      $opcao = readline("Opção: ");
+      echo("Opção: ");
+      $opcao = readline();
+      
       switch ($opcao) {
         case '1':
           echo "Você selecionou a Opção 1.\n";
@@ -33,8 +35,8 @@ class VendaController
           $this->excluir();
           break;
         case '0':
-          echo "Saindo...\n";
-          exit;
+          echo "Voltando ao menu principal...\n";
+          return;
         default:
           echo "Opção inválida. Tente novamente.\n";
           break;
